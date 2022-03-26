@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Producto Registrado</title>
+<style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <h2>PRODUCTO REGISTRADO!</h2>
+    <span>Nombre:</span><span th:text="${producto.nombre}"></span><br/>
+    <span>Descripción:</span><span th:text="${producto.descripcion}"></span><br/>
+    <span>Tipo:</span><span th:text="${producto.tipo}"></span><br/>
+    <span>Kcal:</span><span th:text="${producto.kcal}"></span><br/>    
+    <a href="/productos/listar">Volver</a> 
+
+</div>
+</body>
+</html>

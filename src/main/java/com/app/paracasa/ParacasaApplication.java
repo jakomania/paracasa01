@@ -17,6 +17,9 @@ public class ParacasaApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParacasaApplication.class, args);
+		
+		//private final Logger log = LoggerFactory.getLogger(ParacasaApplication.class);
+		
 	}
 
 }
