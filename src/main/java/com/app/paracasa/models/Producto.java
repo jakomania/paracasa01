@@ -12,10 +12,10 @@ public class Producto  {
 //	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_producto;
 	
-	@Column(name = "nombre", length = 45)
+	//@Column(name = "nombre", length = 45)
 	private String nombre;
 	
-	@Column(name = "descripcion", length = 45)
+	//@Column(name = "descripcion", length = 45)
 	private String descripcion;		
 	
 	private int kcal;

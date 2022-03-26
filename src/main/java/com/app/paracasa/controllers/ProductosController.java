@@ -37,7 +37,9 @@ public class ProductosController {
 	@GetMapping("/productos/listar")
 	public String listartProductos(Model model) {
 		
-		List<Producto> productos = repo.findAll();												
+		//Listamos todos los productos
+		List<Producto> productos = repo.findAll();
+		//Le pasamos la lista de objetos a la vista
 		model.addAttribute("productos", productos);
 				
 		return "/productos/listar";		
@@ -46,11 +48,15 @@ public class ProductosController {
 	@GetMapping("/productos/registrar")
     public String registrarProducto(Model model) {
 		
+		//Definimos lista de objetos a pasar a la vista
 //		List<String> tipos = Arrays.asList("Entrantes", "Primeros", "Segundos", "Postres");
 		List<String> tipos = Arrays.asList("1","2","3","4");
+		//Le pasamos la lista de objetos a la vista
         model.addAttribute("tipos", tipos);
 		
+        //Creamos objeto producto 
 		Producto producto = new Producto();
+		//Le pasamos el objeto a la vista 
         model.addAttribute("producto", producto);
          
         return "/productos/registrar";        
@@ -59,7 +65,7 @@ public class ProductosController {
 	@PostMapping("/productos/registrar")
 	public String submitForm(@ModelAttribute("producto") Producto producto) {
 		
-	    System.out.println(producto);
+	    //System.out.println(producto);
 		repo.save(producto);
 
 	    return "/productos/resultado";
