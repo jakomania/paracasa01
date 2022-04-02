@@ -1,15 +1,19 @@
 package com.app.paracasa.models;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
 public class Producto  {
 	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_producto;
 	
 	//@Column(name = "nombre", length = 45)
@@ -20,7 +24,11 @@ public class Producto  {
 	
 	private int kcal;
 	
-	private int tipo;
+	//private int tipo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo", nullable = false)
+    private Tipo tipo;
 	
 	public int getId_producto() {
 		return id_producto;
@@ -46,10 +54,10 @@ public class Producto  {
 	public void setKcal(int kcal) {
 		this.kcal = kcal;
 	}
-	public int getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
-	public void setTipo(int tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 		

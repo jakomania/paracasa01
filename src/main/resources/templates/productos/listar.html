@@ -19,12 +19,15 @@
       </thead>
     	    	
 	    <tr th:each="producto: ${productos}">
-		    <td th:text="${producto.nombre}" />
-		    <td th:text="${producto.descripcion}" />
-		    <td th:text="${producto.tipo}" />
-		    <td th:text="${producto.kcal}" />		    
-		</tr>
-		
+		    <td th:text="${producto.nombre}"></td>
+		    <td th:text="${producto.descripcion}"></td>
+		    <td th:text="${producto.tipo.nombre}"></td>
+		    <td th:text="${producto.kcal}" ></td>		    		    
+		    <td> 
+		    <a th:href="@{/productos/actualizar/{id}(id=${producto.id_producto})}">Actualizar</a>
+		    <a th:href="@{/productos/borrar/{id}(id=${producto.id_producto})}">Borrar</a> 	            
+    		</td>		    		    		    		    		    
+		</tr>			
     </table>
     <br/>
     <tr><a href="/productos/registrar">Registrar producto</a></tr>     

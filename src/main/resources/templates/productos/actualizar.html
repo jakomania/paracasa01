@@ -8,7 +8,12 @@
         margin: 5px;
         text-align: left;
     }  
-         
+    input[type=select] {
+		  width: 200px;
+
+	
+	}     
+    
     button {
         padding: 5px;
         margin: 10px;
@@ -16,11 +21,11 @@
     
 </style>
 <meta charset="ISO-8859-1">
-<title>ParaCasa - Registrar Producto</title>
+<title>ParaCasa - Actualizar Producto</title>
 </head>
 <body>
 <div align="center">
-	<h2 >PARACASA - REGISTRAR PRODUCTO</h2>    
+	<h2 >PARACASA - ACTUALIZAR PRODUCTO</h2>    
     <form action="#" th:action="@{/productos/registrar}" method="post" th:object="${producto}">
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" /><br/>
@@ -28,7 +33,7 @@
         <label>Descripción:</label>
         <input type="text" th:field="*{descripcion}" /><br/>
         
-        <span>Tipo:</label>        
+        <label>Tipo:</label>        
         <select th:field="*{tipo}">
             <option th:each="t : ${tipos}" th:value="${t.id_tipo}" th:text="${t.nombre}" />
         </select>
