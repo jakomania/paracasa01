@@ -1,6 +1,5 @@
 package com.app.paracasa.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +25,7 @@ public class Producto  {
 	
 	//private int tipo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
     @JoinColumn(name = "tipo", nullable = false)
     private Tipo tipo;
 	

@@ -63,7 +63,6 @@ public class ProductosController {
 	}
 	
 	
-//	@GetMapping("/productos/actualizar")
     @GetMapping("/productos/actualizar/{id}")
     public String actualizarProducto(@PathVariable(value = "id") int id, Model model) 
 	{		
@@ -79,20 +78,24 @@ public class ProductosController {
         return "/productos/actualizar";        
     }
 	
-	
-	@PostMapping("/productos/actualizar")
-	public String actualizarForm(@ModelAttribute("producto") Producto producto) 
-	{	
-		Producto producto_act = producto_repo.getById(producto.getId_producto());
-		producto_act.setId_producto(producto.getId_producto());
-		producto_act.setNombre(producto.getNombre());
-		producto_act.setDescripcion(producto.getDescripcion());
-		producto_act.setTipo(producto.getTipo());
-		producto_act.setKcal(producto.getKcal());
-		producto_repo.save(producto_act);
-				
-	    return "/productos/resultado";
-	}
+        
+//	@PostMapping("/productos/actualizar")
+//	public String actualizarProd(@ModelAttribute("producto") Producto producto)
+//    
+//	{	    	
+////		Producto producto_act = producto_repo.getById(producto.getId_producto());
+//		
+//		producto_repo.update(
+//				producto.getId_producto(),
+//				producto.getDescripcion(),
+//				producto.getNombre(), 
+//				producto.getKcal(), 
+//				producto.getTipo().getId_tipo()
+//				);
+//
+//				
+//	    return "/productos/resultado";
+//	}
 	
 	
 	@GetMapping("/productos/borrar/{id}")
@@ -103,7 +106,6 @@ public class ProductosController {
         //return "ok";
 	}
 	
-
 
 }
 
