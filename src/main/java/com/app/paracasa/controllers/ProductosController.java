@@ -83,7 +83,6 @@ public class ProductosController {
 //	public String actualizarProd(@ModelAttribute("producto") Producto producto)
 //    
 //	{	    	
-////		Producto producto_act = producto_repo.getById(producto.getId_producto());
 //		
 //		producto_repo.update(
 //				producto.getId_producto(),
@@ -92,7 +91,6 @@ public class ProductosController {
 //				producto.getKcal(), 
 //				producto.getTipo().getId_tipo()
 //				);
-//
 //				
 //	    return "/productos/resultado";
 //	}

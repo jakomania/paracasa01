@@ -1,5 +1,6 @@
 package com.app.paracasa.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,15 +16,15 @@ public class Producto  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_producto;
 	
-	//@Column(name = "nombre", length = 45)
+	@Column
 	private String nombre;
 	
-	//@Column(name = "descripcion", length = 45)
+	@Column
 	private String descripcion;		
 	
+	@Column
 	private int kcal;
-	
-	//private int tipo;
+		
 	
 	@ManyToOne
     @JoinColumn(name = "tipo", nullable = false)

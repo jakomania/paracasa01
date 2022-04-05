@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Paracasa - Tipos de productos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>   
+<div align="center">
+ <h2 >PARACASA - TIPOS DE PRODUCTOS</h2>
+    <table>
+    <thead>
+          <tr>                  
+              <th scope="col">Nombre</th>                      
+              <th></th>                      
+          </tr>                  
+      </thead>    	    	
+	     <tr th:each="tipo: ${tipos}">
+		    <td th:text="${tipo.nombre}"></td>		        		    
+		    <td>
+		    <a th:href="@{/tipos/actualizar/{id}(id=${tipo.id_tipo})}">Actualizar</a>
+		    <a th:href="@{/tipos/borrar/{id}(id=${tipo.id_tipo})}">Borrar</a> 	            
+    		</td>		    		    		    		    		    
+		</tr>			
+    </table>
+    <br/>
+    <tr><a href="/tipos/registrar">Registrar tipo</a></tr>     
+</div>    
+</body>
+</html>

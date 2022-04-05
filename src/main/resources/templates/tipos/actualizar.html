@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }  
+    input[type=select] {
+		  width: 200px;
+
+	
+	}     
+    
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+    
+</style>
+<meta charset="ISO-8859-1">
+<title>ParaCasa - Actualizar Tipo de producto</title>
+</head>
+<body>
+<div align="center">
+	<h2 >PARACASA - ACTUALIZAR TIPO DE PRODUCTO</h2>    
+    <form action="#" th:action="@{/tipos/registrar}" method="post" th:object="${tipos}">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" /><br/>
+         
+        
+        <a href="/tipos/listar">Volver</a> 
+        <button type="submit">Registrar</button>
+            
+    </form>
+</div>
+</body>
+</html>
