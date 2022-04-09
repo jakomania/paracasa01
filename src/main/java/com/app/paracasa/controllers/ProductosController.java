@@ -30,6 +30,7 @@ public class ProductosController {
 	{		
 		//Listamos todos los productos
 		List<Producto> productos = producto_repo.findAll();
+		
 		//Le pasamos la lista de objetos a la vista
 		model.addAttribute("productos", productos);
 				
@@ -41,11 +42,14 @@ public class ProductosController {
     public String registrarProducto(Model model) 
 	{	
 		//Definimos lista de objetos a pasar a la vista		
-		List<Tipo> tipos = tipo_repo.findAll();		
+		List<Tipo> tipos = tipo_repo.findAll();	
+		
 		//Le pasamos la lista de objetos a la vista
-        model.addAttribute("tipos", tipos);		
+        model.addAttribute("tipos", tipos);
+        
         //Creamos objeto producto 
 		Producto producto = new Producto();
+		
 		//Le pasamos el objeto a la vista 
         model.addAttribute("producto", producto);
          
@@ -56,10 +60,10 @@ public class ProductosController {
 	@PostMapping("/productos/registrar")
 	public String submitForm(@ModelAttribute("producto") Producto producto) 
 	{	
-	    //System.out.println(producto);
+	    
 		producto_repo.save(producto);
 
-	    return "/productos/resultado";
+	    return "redirect:/productos/listar";
 	}
 	
 	
@@ -68,10 +72,13 @@ public class ProductosController {
 	{		
 		//Definimos lista de objetos a pasar a la vista		
 		List<Tipo> tipos = tipo_repo.findAll();		
+		
 		//Le pasamos la lista de objetos a la vista
-        model.addAttribute("tipos", tipos);		
+        model.addAttribute("tipos", tipos);
+        
         //Creamos objeto producto
-        Producto producto = producto_repo.getById(id);				
+        Producto producto = producto_repo.getById(id);
+        
 		//Le pasamos el objeto a la vista 
         model.addAttribute("producto", producto);
          
@@ -79,29 +86,37 @@ public class ProductosController {
     }
 	
         
-//	@PostMapping("/productos/actualizar")
-//	public String actualizarProd(@ModelAttribute("producto") Producto producto)
-//    
-//	{	    	
-//		
-//		producto_repo.update(
-//				producto.getId_producto(),
-//				producto.getDescripcion(),
-//				producto.getNombre(), 
-//				producto.getKcal(), 
-//				producto.getTipo().getId_tipo()
-//				);
-//				
-//	    return "/productos/resultado";
-//	}
+	@PostMapping("/productos/actualizar")
+	public String actualizarProd(@ModelAttribute("producto") Producto producto)    
+	{	    			
+		Producto productoDb = producto_repo.getById(producto.getId_producto()) ;
+		productoDb.setNombre(producto.getNombre());
+		productoDb.setDescripcion(producto.getDescripcion());
+		productoDb.setTipo(producto.getTipo());
+		productoDb.setKcal(producto.getKcal());
+			
+		
+		producto_repo.save(productoDb);
+																	
+    return "redirect:/productos/listar";
+	}
+	
+	@GetMapping("/productos/confirmar/{id}")
+    public String ConfirmarPorId(@PathVariable(value = "id") int id, Model model) 
+	{
+		Producto producto = producto_repo.getById(id) ;
+		model.addAttribute("producto", producto );		        
+        
+        return "/productos/confirmar";
+	}
 	
 	
 	@GetMapping("/productos/borrar/{id}")
     public String borrarPorId(@PathVariable(value = "id") int id) 
 	{
         producto_repo.deleteById(id);
-        return "redirect:/";
-        //return "ok";
+        return "redirect:/productos/listar";
+       
 	}
 	
 

@@ -26,7 +26,7 @@
 <body>
 <div align="center">
 	<h2 >PARACASA - ACTUALIZAR PRODUCTO</h2>    
-    <form action="#" th:action="@{/productos/registrar}" method="post" th:object="${producto}">
+    <form action="#" th:action="@{/productos/actualizar}" method="post" th:object="${producto}">
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" /><br/>
  
@@ -42,8 +42,10 @@
         <label>Kcal:</label>
         <input type="text" th:field="*{kcal}" /><br/>
         
+        <input type="hidden" th:field="*{id_producto}" />
+        
         <a href="/productos/listar">Volver</a> 
-        <button type="submit">Registrar</button>
+        <button type="submit">Actualizar</button>
             
     </form>
 </div>

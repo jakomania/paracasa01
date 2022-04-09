@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Producto Registrado</title>
+<title>Confirmacion necesaria</title>
 <style type="text/css">
     span {
         display: inline-block;
@@ -13,12 +13,15 @@
 </head>
 <body>
 <div align="center">
-    <h2>PRODUCTO REGISTRADO!</h2>
+    <h2>VAS A BORRAR UN PRODUCTO!</h2>
     <span>Nombre:</span><span th:text="${producto.nombre}"></span><br/>
     <span>Descripción:</span><span th:text="${producto.descripcion}"></span><br/>
     <span>Tipo:</span><span th:text="${producto.tipo.nombre}"></span><br/>
-    <span>Kcal:</span><span th:text="${producto.kcal}"></span><br/>    
-    <a href="/productos/listar">Volver</a> 
+    <span>Kcal:</span><span th:text="${producto.kcal}"></span><br/><br/>        
+    
+    <p>¿Que hacemos?</p>    
+    <a th:href="@{/productos/borrar/{id}(id=${producto.id_producto})}">Aceptar</a>
+    <a href="/productos/listar">Cancelar</a>
 
 </div>
 </body>

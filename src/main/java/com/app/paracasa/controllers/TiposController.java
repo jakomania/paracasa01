@@ -27,6 +27,7 @@ public class TiposController {
 	{		
 		//Listamos todos los productos
 		List<Tipo> tipos = tipo_repo.findAll();		
+		
 		//Le pasamos la lista de objetos a la vista
 		model.addAttribute("tipos", tipos);
 				
@@ -35,9 +36,14 @@ public class TiposController {
 	
 	
 		@GetMapping("/tipos/registrar")
-	    public String solicitaForm(Model model) 
+	    public String solicitarForm(Model model) 
 		{	
-						        	         
+			//Instanciamos el objeto
+			Tipo tipo = new Tipo();
+			
+			//Le pasamos el objeto a la vista 
+	        model.addAttribute("tipo", tipo);
+	        
 	        return "/tipos/registrar";        
 	    }
 		
@@ -45,22 +51,21 @@ public class TiposController {
 		@PostMapping("/tipos/registrar")
 		public String enviarForm(@ModelAttribute("tipo") Tipo tipo) 
 		{	
-		    //System.out.println(producto);
+			//Registramos los cambios en la BBDD
 			tipo_repo.save(tipo);
-
-		    return "/tipos/resultado";
+			
+		    return "redirect:/tipos/listar";
 		}
 		
-		
+						
 	    @GetMapping("/tipos/actualizar/{id}")
 	    public String actualizarProducto(@PathVariable(value = "id") int id, Model model) 
 		{		
-			//Definimos lista de objetos a pasar a la vista		
-			List<Tipo> tipos = tipo_repo.findAll();		
-			//Le pasamos la lista de objetos a la vista
-	        model.addAttribute("tipos", tipos);		
-	        //Creamos objeto producto
-	        Tipo tipo = tipo_repo.getById(id);				
+					
+	        //Hacemos select del objeto que queremos actualizar
+	        Tipo tipo = tipo_repo.getById(id);
+	    	System.out.println("El ID a actualizar es " + tipo.getId_tipo());
+	        
 			//Le pasamos el objeto a la vista 
 	        model.addAttribute("tipo", tipo);
 	         
@@ -68,30 +73,43 @@ public class TiposController {
 	    }
 		
 	        
-//		@PostMapping("/productos/actualizar")
-//		public String actualizarProd(@ModelAttribute("producto") Producto producto)
-	//    
-//		{	    	
-//			
-//			producto_repo.update(
-//					producto.getId_producto(),
-//					producto.getDescripcion(),
-//					producto.getNombre(), 
-//					producto.getKcal(), 
-//					producto.getTipo().getId_tipo()
-//					);
-//					
-//		    return "/productos/resultado";
-//		}
+		@PostMapping("/tipos/actualizar")
+		public String actualizarTipo(@ModelAttribute("tipo") Tipo tipo)
+	    
+		{	    	
+			
+			Tipo tipoDb = tipo_repo.getById(tipo.getId_tipo()) ;
+			tipoDb.setNombre(tipo.getNombre());
+			tipo_repo.save(tipoDb);
+																			
+			return "redirect:/tipos/listar";
+		}
 		
+		
+		@GetMapping("/tipos/confirmar/{id}")
+	    public String ConfirmarPorId(@PathVariable(value = "id") int id, Model model) 
+		{
+			Tipo tipoDb = tipo_repo.getById(id) ;
+			model.addAttribute("tipo", tipoDb );
+			
+//	        tipo_repo.deleteById(id);
+	        
+	        return "/tipos/confirmar";
+	        //return "redirect:/";
+
+		}
 		
 		@GetMapping("/tipos/borrar/{id}")
 	    public String borrarPorId(@PathVariable(value = "id") int id) 
 		{
+			
 	        tipo_repo.deleteById(id);
-	        return "redirect:/";
-	        //return "ok";
+	        
+	        //return " /tipos/listar";
+	        return "redirect:/tipos/listar";
+
 		}
+
 		
 
 	}

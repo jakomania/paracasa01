@@ -25,12 +25,13 @@
 		    <td th:text="${producto.kcal}" ></td>		    		    
 		    <td> 
 		    <a th:href="@{/productos/actualizar/{id}(id=${producto.id_producto})}">Actualizar</a>
-		    <a th:href="@{/productos/borrar/{id}(id=${producto.id_producto})}">Borrar</a> 	            
+		    <a th:href="@{/productos/confirmar/{id}(id=${producto.id_producto})}">Borrar</a> 	            
     		</td>		    		    		    		    		    
 		</tr>			
     </table>
     <br/>
-    <tr><a href="/productos/registrar">Registrar producto</a></tr>     
+    <tr><a href="/productos/registrar">Registrar producto</a></tr><br/>    
+    <tr><a href="/">Volver al menu principal</a></tr> 
 </div>    
 </body>
 </html>

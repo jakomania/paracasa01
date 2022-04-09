@@ -1,17 +1,23 @@
 package com.app.paracasa.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
-public class Tipo  {
+@Table(name = "tipo")
+public class Tipo {
 	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_tipo;
 	
-	//@Column(name = "nombre", length = 45)
+    @Column
 	private String nombre;
 	
 	public int getId_tipo() {
