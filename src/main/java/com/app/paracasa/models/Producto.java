@@ -7,25 +7,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table
 public class Producto  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_producto;
 	
-	@Column
+	@Column(unique = true, nullable = false)
 	private String nombre;
 	
-	@Column
+	@Column(nullable = false)
 	private String descripcion;		
 	
 	@Column
 	private int kcal;
-		
-	
+			
 	@ManyToOne
     @JoinColumn(name = "tipo", nullable = false)
     private Tipo tipo;

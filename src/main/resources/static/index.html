@@ -1,23 +1,95 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<style type="text/css">
-    body {        
-        width: 400px;        
-        text-align: center;
-    } 
-    </style> 
+	<style>
+  
+    html,body{
+      background-image: url("resources/img/togo.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+      font-family: 'Numans', sans-serif;
+    }
+    .container{
+      height: 100%;
+      align-content: center;
+    }
+    .card{
+	  color: rgb(255, 255, 255);
+      height: 370px;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 400px;
+      background-color: rgb(255, 128, 0) !important;
+    }
+    .card-header h3{
+      color: white;
+    }
+    .input-group-prepend span{
+      width: 50px;
+      background-color: rgb(0, 128, 128);
+      ;
+        color: black;
+      border:0 !important;
+    }
+    input:focus{
+      outline: 0 0 0 0 !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+    .remember{
+      color: white;
+    }
+    .remember input {
+      width: 20px;
+      height: 20px;
+      margin-left: 15px;
+      margin-right: 5px;
+    }
+    .login_btn{
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 128, 128);
+      width: 100px;
+    }
+    .login_btn:hover{
+      color: black;
+      background-color: white;
+    }
+    .links{
+      color: white;
+    }
+    .links a{
+      margin-left: 4px;
+    }
+    @media only screen and (min-width : 150px) and (max-width : 530px){
+    }
+  
+  </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	
     <title>Hello world!</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
 </head>
 <body>
-<div align="center">
-    <h1 >BIENVENIDO A PARACASA!!</h1>
-    <h3>Selecciona entidad para operar</h3>
-    <br>
-    <a href="/productos/listar">Productos</a><br>
-    <a href="/tipos/listar">Tipos</a><br>
-    </div>    
+
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+	<div class="card">
+        <div class="card-header">
+    	<h1 >BIENVENIDO A PARACASA!!</h1>
+    	</div>
+    	<div class="card-body">
+    	<h3>Selecciona entidad para operar</h3>
+    	</div>
+        <div class="card-footer">
+        <a href="/productos/listar" class="btn float-right login_btn">Productos</a>
+    	<a href="/tipos/listar" class="btn float-right login_btn">Tipos</a>
+    	</div>        
+ 	</div>
+</div>
+    
+    
 </body>
 
 </html>

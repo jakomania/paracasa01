@@ -1,10 +1,15 @@
 package com.app.paracasa.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -17,9 +22,12 @@ public class Tipo {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_tipo;
 	
-    @Column
+    @Column(unique = true, nullable = false)
 	private String nombre;
 	
+    @OneToMany(fetch = FetchType.EAGER,mappedBy="tipo",cascade = CascadeType.ALL)
+    private Set<Producto> productos;
+    
 	public int getId_tipo() {
 		return id_tipo;
 	}
