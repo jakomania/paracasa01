@@ -17,8 +17,9 @@ import com.app.paracasa.repo.ITipoRepo;
 
 @Controller
 public class TiposController {
-						
 	
+	
+							
 	@Autowired
 	private ITipoRepo tipo_repo;
 	
@@ -105,7 +106,7 @@ public class TiposController {
 			
 	        tipo_repo.deleteById(id);
 	        
-	        //return " /tipos/listar";
+	        //
 	        return "redirect:/tipos/listar";
 
 		}

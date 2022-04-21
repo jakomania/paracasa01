@@ -1,5 +1,12 @@
-{"properties": [{
-  "name": "spring.logging.level.org.hibernate.SQL",
-  "type": "java.lang.String",
-  "description": "A description for 'spring.logging.level.org.hibernate.SQL'"
-}]}
+{"properties": [
+  {
+    "name": "spring.logging.level.org.hibernate.SQL",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.logging.level.org.hibernate.SQL'"
+  },
+  {
+    "name": "spring.logging.level.org.hibernate.SQL",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.logging.level.org.hibernate.SQL'"
+  }
+]}

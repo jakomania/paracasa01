@@ -1,7 +1,6 @@
 package com.app.paracasa;
 
 import org.springframework.boot.SpringApplication;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -14,11 +13,13 @@ public class ParacasaApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(ParacasaApplication.class);
 	}
+	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParacasaApplication.class, args);
 		
-		//private final Logger log = LoggerFactory.getLogger(ParacasaApplication.class);
+		
 		
 	}
 
