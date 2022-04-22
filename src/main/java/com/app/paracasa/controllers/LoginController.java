@@ -3,6 +3,7 @@ package com.app.paracasa.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.app.paracasa.models.Usuario;
@@ -10,13 +11,38 @@ import com.app.paracasa.repo.IUsuarioRepo;
 
 
 @Controller
-public class RegistroController {
+public class LoginController {
 	
 	@Autowired
 	private IUsuarioRepo repo;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@GetMapping("/login")
+	public String solicitarForm() 
+	{		
+		
+		return "/login";
+		
+	}
+	
+	
+	@GetMapping("/register")
+	public String solicitarForm(Model model) {
+	    model.addAttribute("usuario", new Usuario());
+	     
+	    return "/register";
+	}
+//	@PostMapping("/login")
+//	public String enviarForm(@ModelAttribute("") Tipo tipo) 
+//	{	
+//		//Registramos los cambios en la BBDD
+//		repo.save(tipo);
+//		
+//	    return "redirect:/tipos/listar";
+//	}
+	
 	
 	@GetMapping("/testauth")
 	public String testAuth() 
