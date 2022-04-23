@@ -17,10 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserService userDetailsService;
-		
-	
-//	@Autowired
-//	private BCryptPasswordEncoder bcrypt;
+			
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -55,12 +52,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
+        	.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
 	        .antMatchers("/").permitAll()
+	        .antMatchers("/register").permitAll()
+	        .antMatchers("/webjars/**").permitAll()	        
             .anyRequest().authenticated()
 		    .and()		    
 	    .formLogin()
 	        .loginPage("/login")
-	        .permitAll();
+	        .permitAll()
+        .and()
+        .logout().logoutSuccessUrl("/").permitAll();
+
         
 	    //.httpBasic();
 	    //.authenticationEntryPoint(null);

@@ -6,8 +6,8 @@ import com.app.paracasa.models.Usuario;
 
 public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	
-	//Usuario findByNombre(String nombre);
-	Usuario findByUsuario(String usuario);
+	
+	Usuario findByNombre(String usuario);
 	
 
 	

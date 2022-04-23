@@ -6,20 +6,80 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
   </head>
-  <body>
-    <div tiles:fragment="content">
-        <form name="f" th:action="@{/login}" method="post">                       
+   <body>
+    <div class="container text-center">    
+        <div>
+            <h1>PARACASA - Login</h1>
+        </div>
+        <form name="f" th:action="@{/login}" method="post" style="max-width: 600px; margin: 0 auto;">                       
             <fieldset>
-                <legend>Please Login</legend>                
-                <label for="username">Username</label></br>
-                <input type="text" id="username" name="username"/></br>        
-                <label for="password">Password</label></br>
-                <input type="password" id="password" name="password"/></br>    
+                
+            <div class="m-3">                        
+            <div class="form-group row">                
+                <label class="col-4 col-form-label" for="username">Username</label></br>
+            <div class="col-8">
+                <input type="text" id="username" name="username"/></br>
+            </div>
+            </div>            
+            <div class="form-group row">
+                <label class="col-4 col-form-label" for="password">Password</label></br>
+            <div class="col-8">
+                <input type="password" id="password" name="password"/></br>
+			</div>
+            </div>                    
                 <div class="form-actions">
-                    <button type="submit" class="btn">Log in</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="/" class="btn btn-primary">Volver</a>
                 </div>
-            </fieldset>            
+            </fieldset>
+            </div>            
         </form>
     </div>
-  </body>
+  </body> 
+  <!--
+  <body>
+    
+        <div>
+            <h1>PARACASA - LOGIN</h1>
+        </div>
+        <form th:action="@{/register}" th:object="${usuario}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">            
+            
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Usuario: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{nombre}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Correo: </label>
+                <div class="col-8">
+                    <input type="email" th:field="*{correo}" class="form-control" required />
+                </div>
+            </div>
+                                                 
+            
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Clave: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{clave}" class="form-control"
+                            required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+                         
+             
+            <div>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a href="/" class="btn btn-primary">Volver</a>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+</body>-->
+  
+  
 </html>

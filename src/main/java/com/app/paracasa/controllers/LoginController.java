@@ -5,6 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.paracasa.models.Usuario;
 import com.app.paracasa.repo.IUsuarioRepo;
@@ -34,31 +36,44 @@ public class LoginController {
 	     
 	    return "/register";
 	}
-//	@PostMapping("/login")
-//	public String enviarForm(@ModelAttribute("") Tipo tipo) 
-//	{	
-//		//Registramos los cambios en la BBDD
-//		repo.save(tipo);
-//		
-//	    return "redirect:/tipos/listar";
-//	}
 	
 	
-	@GetMapping("/testauth")
-	public String testAuth() 
-	{
-		Usuario us = new Usuario();
-		us.setNombre("Mark Passio");
-		us.setUsuario("markp");
-		us.setCorreo("markp@protonmail.com");
-		us.setClave(encoder.encode("123"));
-		Usuario retorno = repo.save(us);
+	@PostMapping("/register")
+	public String enviarForm(@ModelAttribute("usuario") Usuario usuario) 
+	{	
 		
-		System.out.println("INSERTADO USUARIO:" + retorno.getUsuario());
+		//Ciframos el input de usuario para la pass
+		usuario.setClave(encoder.encode(usuario.getClave()));
 		
-		return "/ok";
+		//Registramos los cambios en la BBDD
+		repo.save(usuario);
+		
+	    return "/okregistro";
+	}
+	
+	@GetMapping("/admin")
+	public String adminPanel() 
+	{		
+		
+		return "/admin";
 		
 	}
+	
+	
+//	@GetMapping("/testauth")
+//	public String testAuth() 
+//	{
+//		Usuario us = new Usuario();
+//		us.setNombre("jacobr");		
+//		us.setCorreo("jrc@protonmail.com");
+//		us.setClave(encoder.encode("321"));
+//		repo.save(us);
+//		
+//		//System.out.println("INSERTADO USUARIO:" + retorno.getUsuario());
+//		
+//		return "/ok";
+		
+//	}
 	
 
 }

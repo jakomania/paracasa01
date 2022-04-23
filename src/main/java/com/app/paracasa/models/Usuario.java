@@ -1,6 +1,9 @@
 package com.app.paracasa.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -8,10 +11,10 @@ public class Usuario {
 	
 	
 	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_usuario;
-	
-	private String usuario;
-	
+			
 	private String nombre;
 	
 	private String correo;
@@ -26,14 +29,7 @@ public class Usuario {
 		this.id_usuario = id_usuario;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}

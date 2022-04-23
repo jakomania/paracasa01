@@ -19,7 +19,7 @@
             <div class="form-group row">
                 <label class="col-4 col-form-label">Usuario: </label>
                 <div class="col-8">
-                    <input type="text" th:field="*{usuario}" class="form-control"
+                    <input type="text" th:field="*{nombre}" class="form-control"
                             required minlength="2" maxlength="20"/>
                 </div>
             </div>
@@ -30,14 +30,7 @@
                     <input type="email" th:field="*{correo}" class="form-control" required />
                 </div>
             </div>
-                                     
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Nombre completo: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{nombre}" class="form-control"
-                            required minlength="2" maxlength="20"/>
-                </div>
-            </div>
+                                                 
             
             <div class="form-group row">
                 <label class="col-4 col-form-label">Clave: </label>
@@ -46,11 +39,12 @@
                             required minlength="6" maxlength="10"/>
                 </div>
             </div>
-                         
-             
+                                     
             <div>
                 <button type="submit" class="btn btn-primary">Registrar</button>
+                <a href="/" class="btn btn-primary">Volver</a>
             </div>
+            
         </div>
         </form>
     </div>
