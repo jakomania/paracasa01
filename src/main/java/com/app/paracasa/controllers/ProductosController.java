@@ -25,7 +25,7 @@ public class ProductosController {
 	@Autowired
 	private ITipoRepo tipo_repo;
 	
-	@GetMapping("/productos/listar")
+	@GetMapping("/admin/productos/listar")
 	public String listartProductos(Model model) 
 	{		
 		//Listamos todos los productos
@@ -38,7 +38,7 @@ public class ProductosController {
 	}
 	
 	
-	@GetMapping("/productos/registrar")
+	@GetMapping("/admin/productos/registrar")
     public String registrarProducto(Model model) 
 	{	
 		//Definimos lista de objetos a pasar a la vista		
@@ -57,7 +57,7 @@ public class ProductosController {
     }
 	
 	
-	@PostMapping("/productos/registrar")
+	@PostMapping("/admin/productos/registrar")
 	public String submitForm(@ModelAttribute("producto") Producto producto) 
 	{	
 	    
@@ -67,7 +67,7 @@ public class ProductosController {
 	}
 	
 	
-    @GetMapping("/productos/actualizar/{id}")
+    @GetMapping("/admin/productos/actualizar/{id}")
     public String actualizarProducto(@PathVariable(value = "id") int id, Model model) 
 	{		
 		//Definimos lista de objetos a pasar a la vista		
@@ -86,7 +86,7 @@ public class ProductosController {
     }
 	
         
-	@PostMapping("/productos/actualizar")
+	@PostMapping("/admin/productos/actualizar")
 	public String actualizarProd(@ModelAttribute("producto") Producto producto)    
 	{	    			
 		Producto productoDb = producto_repo.getById(producto.getId_producto()) ;
@@ -101,7 +101,7 @@ public class ProductosController {
     return "redirect:/productos/listar";
 	}
 	
-	@GetMapping("/productos/confirmar/{id}")
+	@GetMapping("/admin/productos/confirmar/{id}")
     public String ConfirmarPorId(@PathVariable(value = "id") int id, Model model) 
 	{
 		Producto producto = producto_repo.getById(id) ;
@@ -111,7 +111,7 @@ public class ProductosController {
 	}
 	
 	
-	@GetMapping("/productos/borrar/{id}")
+	@GetMapping("/admin/productos/borrar/{id}")
     public String borrarPorId(@PathVariable(value = "id") int id) 
 	{
         producto_repo.deleteById(id);

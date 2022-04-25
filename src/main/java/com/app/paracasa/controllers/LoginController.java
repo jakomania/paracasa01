@@ -17,16 +17,15 @@ public class LoginController {
 	
 	@Autowired
 	private IUsuarioRepo repo;
+		
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/login")
 	public String solicitarForm() 
-	{		
-		
-		return "/login";
-		
+	{				
+		return "/login";	
 	}
 	
 	
@@ -54,7 +53,6 @@ public class LoginController {
 	@GetMapping("/admin")
 	public String adminPanel() 
 	{		
-		
 		return "/admin";
 		
 	}
@@ -71,9 +69,10 @@ public class LoginController {
 //		
 //		//System.out.println("INSERTADO USUARIO:" + retorno.getUsuario());
 //		
-//		return "/ok";
-		
+//		return "/ok";		
 //	}
+	
+	
 	
 
 }

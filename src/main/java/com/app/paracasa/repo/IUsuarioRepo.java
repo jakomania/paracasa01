@@ -9,6 +9,8 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	
 	Usuario findByNombre(String usuario);
 	
+	
+	
 
 	
 
