@@ -26,13 +26,13 @@
 <body>
 <div align="center">
 	<h2 >PARACASA - ACTUALIZAR TIPO DE PRODUCTO</h2>    
-    <form action="#" th:action="@{/tipos/actualizar}" method="post" th:object="${tipo}">
+    <form action="#" th:action="@{/admin/tipos/actualizar}" method="post" th:object="${tipo}">
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" /><br/>
         <input type="hidden" th:field="*{id_tipo}" />
          
         
-        <a href="/tipos/listar">Volver</a> 
+        <a href="/admin/tipos/listar">Volver</a> 
         <button type="submit">Actualizar</button>
             
     </form>

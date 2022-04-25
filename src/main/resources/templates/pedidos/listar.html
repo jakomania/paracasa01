@@ -6,13 +6,13 @@
 </head>
 <body>   
 <div align="center">
- <h2 >PARACASA - PEDIDOS</h2>
+ <h2>PARACASA - PEDIDOS</h2>
+ <h3 th:text="'Bienvenido de nuevo ' + ${usuario}"> </h3>
   
     <table>
     <thead>
           <tr>
-          	  <th scope="col">Pedido</th>                                
-              <th scope="col">Usuario</th>              
+          	  <th scope="col">Pedido</th>                                                            
               <th scope="col">Producto</th>
               <th scope="col">Unidades</th>                                    
               <th></th>                      
@@ -20,8 +20,7 @@
       </thead>    	    	
 	     <tr th:each="pedido: ${pedidos}">
 		    	
-		    <td th:text="${pedido.id_pedido}"></td>
-		    <td th:text="${pedido.usuario.nombre}"></td>
+		    <td th:text="${pedido.id_pedido}"></td>		    
 		    <td th:text="${pedido.producto.nombre}"></td>
 		    <td th:text="${pedido.unidades}"></td>		       		    
 		    <td th:text="${usuario}"></td>

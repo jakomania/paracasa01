@@ -20,8 +20,8 @@
     <span>Kcal:</span><span th:text="${producto.kcal}"></span><br/><br/>        
     
     <p>¿Que hacemos?</p>    
-    <a th:href="@{/productos/borrar/{id}(id=${producto.id_producto})}">Aceptar</a>
-    <a href="/productos/listar">Cancelar</a>
+    <a th:href="@{/admin/productos/borrar/{id}(id=${producto.id_producto})}">Aceptar</a>
+    <a href="/admin/productos/listar">Cancelar</a>
 
 </div>
 </body>

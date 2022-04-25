@@ -35,7 +35,8 @@ public class PedidosController {
 	    Usuario us = usuario_repo.findByNombre(usuario);
 	    
 	    List<Pedido> pedidos = pedido_repo.findPedidoUsuario(us.getId_usuario());
-	    		
+	    
+	    model.addAttribute("usuario", usuario);
 		
 		//Le pasamos la lista de objetos a la vista
 		model.addAttribute("pedidos", pedidos);

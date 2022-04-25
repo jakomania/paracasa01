@@ -23,7 +23,7 @@ public class TiposController {
 	@Autowired
 	private ITipoRepo tipo_repo;
 	
-	@GetMapping("/tipos/listar")
+	@GetMapping("/admin/tipos/listar")
 	public String listartTipos(Model model) 
 	{		
 		//Listamos todos los productos
@@ -36,7 +36,7 @@ public class TiposController {
 	}
 	
 	
-		@GetMapping("/tipos/registrar")
+		@GetMapping("/admin/tipos/registrar")
 	    public String solicitarForm(Model model) 
 		{	
 			//Instanciamos el objeto
@@ -49,7 +49,7 @@ public class TiposController {
 	    }
 		
 		
-		@PostMapping("/tipos/registrar")
+		@PostMapping("/admin/tipos/registrar")
 		public String enviarForm(@ModelAttribute("tipo") Tipo tipo) 
 		{	
 			//Registramos los cambios en la BBDD
@@ -59,7 +59,7 @@ public class TiposController {
 		}
 		
 						
-	    @GetMapping("/tipos/actualizar/{id}")
+	    @GetMapping("/admin/tipos/actualizar/{id}")
 	    public String actualizarProducto(@PathVariable(value = "id") int id, Model model) 
 		{		
 					
@@ -74,7 +74,7 @@ public class TiposController {
 	    }
 		
 	        
-		@PostMapping("/tipos/actualizar")
+		@PostMapping("/admin/tipos/actualizar")
 		public String actualizarTipo(@ModelAttribute("tipo") Tipo tipo)
 	    
 		{	    	
@@ -87,7 +87,7 @@ public class TiposController {
 		}
 		
 		
-		@GetMapping("/tipos/confirmar/{id}")
+		@GetMapping("/admin/tipos/confirmar/{id}")
 	    public String ConfirmarPorId(@PathVariable(value = "id") int id, Model model) 
 		{
 			Tipo tipoDb = tipo_repo.getById(id) ;
@@ -100,7 +100,7 @@ public class TiposController {
 
 		}
 		
-		@GetMapping("/tipos/borrar/{id}")
+		@GetMapping("/admin/tipos/borrar/{id}")
 	    public String borrarPorId(@PathVariable(value = "id") int id) 
 		{
 			

@@ -17,13 +17,13 @@
 	     <tr th:each="tipo: ${tipos}">
 		    <td th:text="${tipo.nombre}"></td>		        		    
 		    <td>
-		    <a th:href="@{/tipos/actualizar/{id}(id=${tipo.id_tipo})}">Actualizar</a>
-		    <a th:href="@{/tipos/confirmar/{id}(id=${tipo.id_tipo})}">Borrar</a> 	            
+		    <a th:href="@{/admin/tipos/actualizar/{id}(id=${tipo.id_tipo})}">Actualizar</a>
+		    <a th:href="@{/admin/tipos/confirmar/{id}(id=${tipo.id_tipo})}">Borrar</a> 	            
     		</td>		    		    		    		    		    
 		</tr>			
     </table>
     <br/>
-    <tr><a href="/tipos/registrar">Registrar tipo</a></tr><br/>
+    <tr><a href="/admin/tipos/registrar">Registrar tipo</a></tr><br/>
     <tr><a href="/">Volver al menu principal</a></tr>     
 </div>    
 </body>

@@ -21,11 +21,11 @@
 <body>
 <div align="center">
 	<h2 >PARACASA - REGISTRAR TIPO DE PRODUCTO</h2>    
-     <form action="#" th:action="@{/tipos/registrar}" method="post" th:object="${tipo}">
+     <form action="#" th:action="@{/admin/tipos/registrar}" method="post" th:object="${tipo}">
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" /><br/>
                  
-        <a href="/tipos/listar">Volver</a> 
+        <a href="/admin/tipos/listar">Volver</a> 
         <button type="submit">Registrar</button>
             
     </form> 
