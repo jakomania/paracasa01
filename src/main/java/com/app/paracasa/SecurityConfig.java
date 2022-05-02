@@ -3,6 +3,7 @@ package com.app.paracasa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,6 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
     	auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     	
+	} 	
+    	
+    	
 //		BCryptPasswordEncoder encoder = passwordEncoder();
 //		          
 //		    	auth
@@ -46,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		          .roles("USER", "ADMIN");
 
           
-    }
+   
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -55,7 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
 	        .antMatchers("/").permitAll()
 	        .antMatchers("/register").permitAll()
-	        .antMatchers("/webjars/**").permitAll()	        
+	        .antMatchers("/webjars/**").permitAll()
+	        .antMatchers(HttpMethod.POST, "/api/tipos").permitAll()
             .anyRequest().authenticated()
 		    .and()		    
 	    .formLogin()
@@ -63,7 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .permitAll()
         .and()
         .logout().logoutSuccessUrl("/").permitAll();
-
+        
+	}
         
 	    //.httpBasic();
 	    //.authenticationEntryPoint(null);
@@ -73,6 +79,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //          .authenticated()
 //          .and()
 //          .httpBasic();
-    }
+//    
 
 }
