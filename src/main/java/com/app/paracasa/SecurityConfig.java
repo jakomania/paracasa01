@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.app.paracasa.service.UserService;
@@ -16,9 +18,11 @@ import com.app.paracasa.service.UserService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+    
 	@Autowired
 	private UserService userDetailsService;
-			
+		
+		
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -26,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	    return bCryptPasswordEncoder;
 	}
-					
+	
+	     					
 	
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception 
@@ -35,50 +40,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     	
 	} 	
+	
+	
     	
-    	
-//		BCryptPasswordEncoder encoder = passwordEncoder();
-//		          
-//		    	auth
-//		          .inMemoryAuthentication()
-//		          .withUser("user")
-//		          .password("123")
-//		          .roles("USER")
-//		          .and()
-//		          .withUser("admin")
-//		          .password(encoder.encode("admin"))
-//		          .roles("USER", "ADMIN");
-
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().authorizeRequests()
+				.antMatchers("/api/tipos/**").hasAnyAuthority("ADMIN")
+				.anyRequest().authenticated()
+				.and().httpBasic();
+				
+	}
           
    
 	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-        .authorizeRequests()
-        	.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-	        .antMatchers("/").permitAll()
-	        .antMatchers("/register").permitAll()
-	        .antMatchers("/webjars/**").permitAll()
-	        .antMatchers(HttpMethod.POST, "/api/tipos").permitAll()
-            .anyRequest().authenticated()
-		    .and()		    
-	    .formLogin()
-	        .loginPage("/login")
-	        .permitAll()
-        .and()
-        .logout().logoutSuccessUrl("/").permitAll();
+//	@Override
+//    protected void configure(HttpSecurity http) throws Exception {
+////        http
+////        .authorizeRequests()
+////        	.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+////	        .antMatchers("/").permitAll()
+////	        .antMatchers("/register").permitAll()
+////	        .antMatchers("/webjars/**").permitAll()
+////	        .antMatchers(HttpMethod.POST, "/api/tipos").permitAll()
+////            .anyRequest().authenticated()
+////		    .and()		    
+////	    .formLogin()
+////	        .loginPage("/login")
+////	        .permitAll()
+////        .and()
+////        .logout().logoutSuccessUrl("/").permitAll();
+//   
+//		 
+////	    http.authorizeRequests()
+////	      .anyRequest().permitAll();
+//        http.cors().and().csrf().disable();
+//
+//	}
         
-	}
-        
-	    //.httpBasic();
-	    //.authenticationEntryPoint(null);
-	
-//          .authorizeRequests()					
-//          .anyRequest()
-//          .authenticated()
-//          .and()
-//          .httpBasic();
-//    
-
+	    
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirmacion necesaria</title>
+<style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <h2>VAS A BORRAR UN TIPO DE PRODUCTO!</h2>
+    <span>Nombre:</span><span th:text="${tipo.nombre}"></span><br/><br/>
+    <p>¿Que hacemos?</p>    
+    <a th:href="@{/admin/tipos/borrar/{id}(id=${tipo.id_tipo})}">Aceptar</a>
+    <a href="/admin/tipos/listar">Cancelar</a> 
+
+</div>
+</body>
+</html>
