@@ -45,7 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
+//		http.cors().and().csrf().disable();
 		http.csrf().disable().authorizeRequests()
+				.antMatchers("/swagger-ui/**", "/javainuse-openapi/**").permitAll()
 				.antMatchers("/api/tipos/**").hasAnyAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and().httpBasic();
