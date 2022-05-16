@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.paracasa.models.Pedido;
-import com.app.paracasa.models.Tipo;
 import com.app.paracasa.models.Usuario;
 import com.app.paracasa.repo.IPedidoRepo;
 import com.app.paracasa.repo.IUsuarioRepo;
